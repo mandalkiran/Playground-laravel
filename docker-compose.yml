@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  laravel-eleven-container:
+    image: laravel-eleven-img
+    volumes:
+      - .:/var/www/html:delegated
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    stdin_open: true
+    tty: true
