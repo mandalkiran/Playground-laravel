@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Log;
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -24,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/chat',function(Request $request) {
+        Log::info("CHAT FUNCTION TRIGGERED");
         \App\Events\MessageEvent::dispatch($request->data);
     });
 });

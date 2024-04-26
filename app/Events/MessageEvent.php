@@ -10,6 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class MessageEvent implements ShouldBroadcastNow
 {
@@ -21,6 +22,7 @@ class MessageEvent implements ShouldBroadcastNow
      */
     public function __construct($message)
     {
+                        Log::info("MessageEvent::::::__construct");
         $this->message = $message;
     }
 
@@ -31,6 +33,7 @@ class MessageEvent implements ShouldBroadcastNow
      */
     public function broadcastOn(): array
     {
+                Log::info("MessageEvent::::::broadcastOn");
         return [
             new Channel('cleavr'),
         ];
