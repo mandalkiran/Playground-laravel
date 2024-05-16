@@ -22,7 +22,7 @@ class MessageEvent implements ShouldBroadcastNow
      */
     public function __construct($message)
     {
-                        Log::info("MessageEvent::::::__construct",$message);
+                        Log::info("MessageEvent::::::__construct",["msg" => $message]);
         $this->message = $message;
     }
 
