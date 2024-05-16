@@ -30,7 +30,10 @@ Route::middleware('auth')->group(function () {
         \App\Events\MessageEvent::dispatch($request->data);
     });
 });
-
+Route::post('/ws-test',function(Request $request) {
+    Log::info("CHAT FUNCTION TRIGGERED");
+    \App\Events\MessageEvent::dispatch($request->data);
+});
 Route::get('/test', function () {
     return "Bon Jour....";
 });
