@@ -34,7 +34,13 @@ Route::post('/ws-test',function(Request $request) {
     Log::info("CHAT FUNCTION TRIGGERED");
     \App\Events\MessageEvent::dispatch($request->data);
 });
+
+Route::get('/cleavr',function(Request $request) {
+    Log::info("CHAT FUNCTION TRIGGERED");
+    \App\Events\MessageEvent::dispatch($request->data);
+});
 Route::get('/test', function () {
+    Log::info("BON JOUR");
     return "Bon Jour....";
 });
 
