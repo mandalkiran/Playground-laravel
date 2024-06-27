@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\User
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -27,5 +28,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/test', function () {
     return "Bon Jour....";
 });
+
+Route::get('/users', function () {
+   dd(User::all());
+});
+
 
 require __DIR__.'/auth.php';
