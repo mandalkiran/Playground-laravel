@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Models\User
+use App\Models\User;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
