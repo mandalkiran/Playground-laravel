@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Jobs\ProcessPodcast;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -31,6 +34,13 @@ Route::get('/test', function () {
 
 Route::get('/users', function () {
    dd(User::all());
+});
+
+Route::get('/redis-test', function (Request $request) {
+    Redis::set('key', $request->get('query'));
+    $value = Redis::get('key');
+    ProcessPodcast::dispatch(['key' => $value]);
+    dd($value);
 });
 
 
