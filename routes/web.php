@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/test', function () {
-    return "Bon Jour....";
+    return "Bon Jour....". config('server_name');
 });
 
 Route::get('/users', function () {
