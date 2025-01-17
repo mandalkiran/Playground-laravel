@@ -2,7 +2,7 @@
 FROM php:8.2-fpm
 
 # Install required extensions and dependencies
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql pcntl
 #RUN docker-php-ext-install mbstring gd
 RUN apt-get update && apt-get install -y libzip-dev zip unzip
 
