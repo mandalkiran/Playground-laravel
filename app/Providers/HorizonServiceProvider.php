@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Laravel\Horizon\Horizon;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
@@ -27,10 +28,12 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      */
     protected function gate(): void
     {
-        Gate::define('viewHorizon', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
+        $admins =  env('ADMIN_EMAILS');
+        $emailArray = explode(',', $admins);
+       // Log::info('Admin emails:', $emailArray);
+        Gate::define('viewHorizon', function ($user) use($emailArray) {
+         //   Log::info('Logged in User:', $user->email);
+            return true;//in_array($user->email, $emailArray);
         });
     }
 }
