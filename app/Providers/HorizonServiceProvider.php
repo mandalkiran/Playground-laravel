@@ -28,9 +28,9 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      */
     protected function gate(): void
     {
-        $admins =  env('ADMIN_EMAILS');
-        $emailArray = explode(',', $admins);
-        Log::info('Admin emails:', $admins);
+        $admins = env('ADMIN_EMAILS', '');
+        $emailArray = array_filter(array_map('trim', explode(',', $admins)));
+        Log::info('Admin emails:', $emailArray);
         Gate::define('viewHorizon', function ($user) use($emailArray) {
          //   Log::info('Logged in User:', $user->email);
             return true;//in_array($user->email, $emailArray);
