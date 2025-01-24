@@ -28,6 +28,8 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      */
     protected function gate(): void
     {
+        Log::info(config('app.name', 'Laravel'));
+        Log::info(env('APP_NAME'));
         $admins = env('ADMIN_EMAILS', '');
         $emailArray = array_filter(array_map('trim', explode(',', $admins)));
         Log::info('Admin emails:', $emailArray);
