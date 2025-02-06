@@ -16,6 +16,11 @@ defineProps({
         type: String,
         required: true,
     },
+  serverName: {
+        type: String,
+        required: true,
+    },
+
 });
 
 function handleImageError() {
@@ -27,7 +32,7 @@ function handleImageError() {
 </script>
 
 <template>
-    <Head title="Welcome" />
+    <Head :title="serverName" />
     <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
         <img
             id="background"
