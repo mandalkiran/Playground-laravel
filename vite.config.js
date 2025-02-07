@@ -10,6 +10,9 @@ export default defineConfig({
             methods: ['*'], // Allowed methods
         },
     },*/
+    server: {
+        origin: process.env.VITE_ASSET_URL || 'http://localhost:5173',
+    },
     plugins: [
         laravel({
             input: 'resources/js/app.js',
